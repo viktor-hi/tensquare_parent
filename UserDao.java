@@ -18,41 +18,5 @@ import java.util.List;
  */
 @CacheNamespace
 public interface UserDao {
-    //将自增长的id查询到设置到user对象中
-    @Insert("insert into user values (null,#{username},#{birthday},#{sex},#{address})")
-    @SelectKey(keyColumn = "id",keyProperty = "id",resultType = Integer.class,before = false,statement = "SELECT last_insert_id()")
-    int addUser(User user);
-
-    @Delete("delete from user where id=#{id}")
-    int deleteUserById(int id);
-
-    @Update("update user set username=#{username},address=#{address} where id=#{id}")
-    int updateUser(User user);
-
-    @Select("select * from user where id=#{id}")
-    User findUserById(int id);
-
-    //使用Results注解自定义映射规则,它里面的每一个Result子标签就映射一个字段
-
-    @Results(id="UserInfoId",value = {
-            //id = true表示映射的这个字段是主键
-            @Result(column = "id",property = "userId",id = true),
-            //如果使用内置映射规则能够映射好的字段，我们可以不进行自定义映射
-            //@Result(column = "username",property = "userName"),
-            @Result(column = "sex",property = "userSex"),
-            @Result(column = "address",property = "userAddress"),
-            @Result(column = "birthday",property = "userBirthday")
-    })
-    @Select("select * from user")
-    List<UserInfo> findAll();
-
-    /**
-     * 根据id查询用户信息，并且将结果集映射到UserInfo对象中
-     * @param id
-     * @return
-     */
-    //使用ResultMap注解引用自定义映射规则
-    @ResultMap("UserInfoId")
-    @Select("select * from user where id=#{id}")
-    UserInfo findUserInfoById(int id);
+   
 }
