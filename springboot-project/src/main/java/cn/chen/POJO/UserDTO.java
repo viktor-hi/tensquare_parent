@@ -1,5 +1,6 @@
 package cn.chen.POJO;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
  * @author haixin
  * @time 2020/1/10
  */
+@Builder
 public class UserDTO {
 
     @Getter
