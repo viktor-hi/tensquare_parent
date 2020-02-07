@@ -10,6 +10,10 @@ spring:
     password: 123456
   main:
     allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      database: commentdb
+      host: 116.85.35.70
 
 # Mybatis-Plus 配置
 mybatis-plus:
