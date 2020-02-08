@@ -14,6 +14,8 @@ spring:
     mongodb:
       database: commentdb
       host: 116.85.35.70
+  redis:
+    host: 116.85.35.70
 
 # Mybatis-Plus 配置
 mybatis-plus:

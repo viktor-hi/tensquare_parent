@@ -4,8 +4,13 @@ import com.tensquare.article.dao.CommentRepository;
 import com.tensquare.article.pojo.Comment;
 import com.tensquare.utils.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +24,10 @@ public class CommentService {
     private IdWorker idWorker;
     @Autowired
     private CommentRepository commentRepository;
+    @Resource
+    private MongoTemplate mongoTemplate;
+
+
 
     public void save(Comment comment) {
         String id = idWorker.nextId() + "";
@@ -47,5 +56,21 @@ public class CommentService {
 
     public List<Comment> findByarticleId(String articleId) {
         return commentRepository.findByArticleid(articleId);
+    }
+
+    public void thumbup(String id) {
+        //方式一需要两次查询
+//        Comment comment = commentRepository.findById(id).get();
+//        comment.setThumbup(comment.getThumbup()+1);
+//        commentRepository.save(comment);
+
+
+        //方式二优化
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(id));
+
+        Update update = new Update();
+        update.inc("thumbup",1);
+        mongoTemplate.updateFirst(query,update,"comment");
     }
 }
