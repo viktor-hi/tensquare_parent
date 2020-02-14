@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室</title>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./WebIMConfig.js"></script>
+    <script src="./js/webimSDK3.0.5.js"></script>
+    <script src="./js/EMedia_x1v1.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin-top: 5px;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">登录和注册</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <input type="text" class="form-control" id="name" placeholder="用户id"/><br>
+                        <input type="text" class="form-control" id="pwd" placeholder="密码"/><br>
+                        <button id="reg" type="button" class="btn btn-primary">注册</button>
+                        <button id="login" type="button" class="btn btn-primary">登录</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">消息接收者</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <input type="text" class="form-control" id="toname" placeholder="接收消息用户id"/><br>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">群发系统广播</h3>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" /><br>
+                    <button id="broadcast" type="button" class="btn btn-primary">发送</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" id="talktitle"></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="well" id="log-container" style="height:400px;overflow-y:scroll">
+
+                    </div>
+                    <input type="text" id="msg" class="form-control col-md-12"/> <br>
+                    <button id="send" type="button" class="btn btn-primary">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    // 初始化配置
+    var conn = {};
+    console.log(WebIM, window.WebIM);
+    WebIM.config = config;
+    conn = WebIM.conn = new WebIM.default.connection({
+        appKey: WebIM.config.appkey,
+        isHttpDNS: WebIM.config.isHttpDNS,
+        isMultiLoginSessions: WebIM.config.isMultiLoginSessions,
+        host: WebIM.config.Host,
+        https: WebIM.config.https,
+        url: WebIM.config.xmppURL,
+        apiUrl: WebIM.config.apiURL,
+        isAutoLogin: false,
+        heartBeatWait: WebIM.config.heartBeatWait,
+        autoReconnectNumMax: WebIM.config.autoReconnectNumMax,
+        autoReconnectInterval: WebIM.config.autoReconnectInterval,
+        isStropheLog: WebIM.config.isStropheLog,
+        delivery: WebIM.config.delivery
+    })
+    conn.listen({
+        onOpened: function (message) {          //连接成功回调
+            var myDate = new Date().toLocaleString();
+            console.log("%c [opened] 连接已成功建立", "color: green");
+            console.log(myDate);
+            // rek();
+            // alert(myDate + "登陆成功")
+        },
+        onClosed: function (message) {
+            console.log("onclose:" + message);
+            console.log(error);
+        },         //连接关闭回调
+        onTextMessage: function (message) {
+            console.log('onTextMessage: ', message);
+            if (message.ext.conferenceId != undefined) {
+                var truthBeTold = window.confirm((message.from + "邀请您加入会议"));
+                if (truthBeTold) {
+                    emedia.mgr.joinConference(message.ext.conferenceId, message.ext.password, "进入会议").then(function () {
+                        console.log("********加入会议成功*******")
+                    }).catch(function (error) {
+                        console.log("加入会议失败")
+                    })
+                }
+            }
+            $("#log-container").append("<div class='bg-info'><label class='text-danger'>"+message.from+"的消息:"+message.ext.time+"</label><div class='text-success'>"+message.data+"</div></div><br>");
+
+        },    //收到文本消息
+
+        onEmojiMessage: function (message) {
+            console.log('onEmojiMessage: ', message);
+        },   //收到表情消息
+        onPictureMessage: function (message) {
+            console.log('onPicMessage: ', message);
+        }, //收到图片消息
+        onCmdMessage: function (message) {
+            console.log('onCmdMessage: ', message);
+        },     //收到命令消息
+        onAudioMessage: function (message) {
+            console.log('onAudioMessage: ', message);
+        },   //收到音频消息
+        onLocationMessage: function (message) {
+            console.log('onLocMessage: ', message);
+        },//收到位置消息
+        onFileMessage: function (message) {
+            console.log('onFileMessage: ', message);
+        },    //收到文件消息
+        recallMessage: function (message) {
+            console.log('recallMessage', message);
+        }, //消息撤回
+        onVideoMessage: function (message) {
+            console.log('onVideoMessage: ', message);
+            var node = document.getElementById('getVideo');
+            var option = {
+                url: message.url,
+                headers: {
+                    'Accept': 'audio/mp4'
+                },
+                onFileDownloadComplete: function (response) {
+                    var objectURL = WebIM.utils.parseDownloadResponse.call(conn, response);
+                    node.src = objectURL;
+                },
+                onFileDownloadError: function () {
+                    console.log('File down load error.')
+                }
+            };
+            WebIM.utils.download.call(conn, option);
+        },   //收到视频消息
+        onPresence: function (message) {
+            var myDate = new Date().toLocaleString();
+            console.log('onPresence: ', myDate + JSON.stringify(message));
+            switch (message.type) {
+                case 'subscribe': // 对方请求添加好友
+                    var truthBeTold = window.confirm((message.from + "申请添加您为好友:"));
+                    if (truthBeTold) {
+                        // 同意对方添加好友
+                        conn.subscribed({
+                            to: message.from,
+                            message: "[resp:true]"
+                        });
+                        console.log("同意添加好友");
+                    } else {
+                        // 拒绝对方添加好友
+                        conn.unsubscribed({
+                            to: message.from,
+                            message: "rejectAddFriend" // 拒绝添加好友回复信息
+                        });
+                        console.log("拒绝添加好友");
+                    }
+                    break;
+                case 'subscribed': // 对方同意添加好友，已方同意添加好友
+                    break;
+                case 'unsubscribe': // 对方删除好友
+                    break;
+                case 'unsubscribed': // 被拒绝添加好友，或被对方删除好友成功
+                    break;
+                case 'memberJoinPublicGroupSuccess': // 成功加入聊天室
+                    console.log('join chat room success' + myDate);
+                    console.log(new Date().toLocaleString());
+                    break;
+                case 'joinChatRoomFaild': // 加入聊天室失败
+                    console.log('join chat room faild');
+                    break;
+                case 'joinPublicGroupSuccess': // 意义待查
+                    console.log('join public group success', message.from);
+                    break;
+                case 'createGroupACK':
+                    conn.createGroupAsync({
+                        from: message.from,
+                        success: function (option) {
+                            console.log('Create Group Succeed');
+                        }
+                    });
+                    break;
+            }
+        },       //处理“广播”或“发布-订阅”消息，如联系人订阅请求、处理群组、聊天室被踢解散等消息
+        onRoster: function (message) {
+            console.log("onRoster", message);
+        },         //处理好友申请
+        onInviteMessage: function (message) {
+            console.log('Invite');
+        },  //处理群组邀请
+        onOnline: function () {
+            console.log("onOnline");
+        },                  //本机网络连接成功
+        onOffline: function () {
+            console.log('offline');
+        },                 //本机网络掉线
+        onError: function (message) {
+            console.log('onError: ', message);
+
+        },          //失败回调
+        onBlacklistUpdate: function (list) {       //黑名单变动
+            // 查询黑名单，将好友拉黑，将好友从黑名单移除都会回调这个函数，list则是黑名单现有的所有好友信息
+            console.log(list);
+        },
+        onReceivedMessage: function (message) {
+            console.log('onReceivedMessage: ', message);
+        },    //收到消息送达服务器回执
+        onDeliveredMessage: function (message) {
+            console.log('onDeliveredMessage：', message);
+        },   //收到消息送达客户端回执
+        onReadMessage: function (message) {
+            console.log('onReadMessage: ', message);
+        },        //收到消息已读回执
+        onCreateGroup: function (message) {
+            console.log('onCreateGroup: ', message);
+        },        //创建群组成功回执（需调用createGroupNew）
+        onMutedMessage: function (message) {
+            console.log('onMutedMessage: ', message);
+        }         //如果用户在A群组被禁言，在A群发消息会走这个回调并且消息不会传递给群其它成员
+    });
+
+    //登录
+    document.getElementById('login').onclick = function () {
+        console.log(WebIM, window.WebIM);
+        var uname = document.getElementById("name").value;
+        var upwd = document.getElementById("pwd").value;
+        options = {
+            apiUrl: WebIM.config.apiURL,
+            user: uname,
+            pwd: upwd,
+            appKey: WebIM.config.appkey
+        };
+        conn.open(options);
+        console.log(options)
+    };
+
+    //退出
+    // document.getElementById("logout").onclick = function () {
+    //     conn.close();
+    // }
+    //发送消息
+    document.getElementById('send').onclick = function () {
+        var myDate = new Date().toLocaleString();
+        var uname = document.getElementById("name").value;
+        var tname = document.getElementById("toname").value;
+        var tmsg = document.getElementById("msg").value;
+        var id = conn.getUniqueId();                 // 生成本地消息id
+        var msg = new WebIM.default.message('txt', id);      // 创建文本消息
+        msg.set({
+            msg: tmsg,                  // 消息内容
+            to: tname,
+            ext: {
+                'time': myDate
+            },                       // 接收消息对象（用户id）
+            success: function (id, serverMsgId) {
+                console.log('send private text Success');
+                msgText = msg.body.msg;
+            },
+            fail: function (e) {
+                console.log("Send private text error");
+            }
+        });
+        msg.body.chatType = 'singleChat';
+        conn.send(msg.body);
+        console.log(msg);
+        //显示用户发送内容
+        $("#log-container").append("<div class='bg-info' style='float: right'><label class='text-danger'>发送给id为"+tname+"的消息:</label><div class='text-success'>"+tmsg+"</div></div><br>");
+    };
+</script>
+</html>
