@@ -12,6 +12,7 @@
         <module>tensquare_article</module>
         <module>tensquare_user</module>
         <module>tensquare_eureka</module>
+        <module>tensquare_encrypt</module>
     </modules>
     <packaging>pom</packaging>
 

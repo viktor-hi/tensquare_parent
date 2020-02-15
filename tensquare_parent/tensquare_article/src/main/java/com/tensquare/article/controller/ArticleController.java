@@ -7,6 +7,7 @@ import com.tensquare.entity.PageResult;
 import com.tensquare.entity.Result;
 import com.tensquare.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -31,7 +32,7 @@ public class ArticleController {
 
     //新增文章
     @RequestMapping( method = RequestMethod.POST)
-    public Result add(@RequestBody Article article) {
+    public Result add(@Validated @RequestBody Article article) {
         articleService.add(article);
         return new Result(true, StatusCode.OK, "添加成功");
     }

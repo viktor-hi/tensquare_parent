@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,6 +24,8 @@ public class Article implements Serializable {
     private String id;//ID
     private String columnid;    //专栏ID
     private String userid;      //用户ID
+    @NotBlank
+    @Size(min = 4,max = 20,message = "标题长度最小为4最大为20")
     private String title;       //标题
     private String content;     //文章正文
     private String image;       //文章封面
