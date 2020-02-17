@@ -40,7 +40,7 @@ public class NoticeController {
         return new Result(true, StatusCode.OK, "查询成功",noticePageResult);
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/{id}")
     public Result update(@PathVariable String id,@RequestBody Notice notice){
         notice.setId(id);
         noticeService.update(notice);

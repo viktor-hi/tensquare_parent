@@ -2,8 +2,11 @@ package com.tensquare.notice.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.tensquare.entity.Result;
 import com.tensquare.notice.dao.NoticeDao;
 import com.tensquare.notice.dao.NoticeFreshDao;
+import com.tensquare.notice.feign.ArticleClient;
+import com.tensquare.notice.feign.UserClient;
 import com.tensquare.notice.pojo.Notice;
 import com.tensquare.notice.pojo.NoticeFresh;
 import com.tensquare.utils.IdWorker;
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,13 +28,19 @@ public class NoticeService {
     private NoticeDao noticeDao;
     @Autowired
     private IdWorker idWorker;
+    @Autowired
+    private ArticleClient articleClient;
+    @Autowired
+    private UserClient userClient;
 
     @Autowired
     private NoticeFreshDao noticeFreshDao;
-    public Notice findById(String id) {
-        return noticeDao.selectById(id);
-    }
 
+    public Notice findById(String id) {
+        Notice notice = noticeDao.selectById(id);
+        getNoticeInfo(notice);
+        return notice;
+    }
 
     public void add(Notice notice) {
         //1.设置初始值
@@ -48,10 +58,27 @@ public class NoticeService {
     }
 
     public Page<Notice> findPage(int page, int size) {
-        Page<Notice> pagelist = new Page<>(page, size);
-        List<Notice> notices = noticeDao.selectPage(pagelist, new EntityWrapper<Notice>());
-        pagelist.setRecords(notices);
-        return pagelist;
+        Page<Notice> pageList = new Page<>(page,size);
+        List<Notice> list = noticeDao.selectPage(pageList, new EntityWrapper<Notice>());
+
+        for (Notice notice : list) {
+            getNoticeInfo(notice);
+        }
+
+        pageList.setRecords(list);
+        return pageList;
+    }
+
+    private void getNoticeInfo(Notice notice) {
+        Result userResult = userClient.findById(notice.getOperatorId());
+        HashMap userMap = (HashMap) userResult.getData();
+        notice.setOperatorName(userMap.get("nickname").toString());
+        //获取文章信息
+        if ("article".equals(notice.getTargetType())) {
+            Result articleResult = articleClient.findById(notice.getTargetId());
+            HashMap articleMap = (HashMap) articleResult.getData();
+            notice.setTargetName(articleMap.get("title").toString());
+        }
     }
 
     public void update(Notice notice) {
