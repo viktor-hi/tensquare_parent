@@ -1,4 +1,4 @@
-package com.tensquare.notice.feign;
+package com.tensquare.notice.client;
 
 import com.tensquare.entity.Result;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author haixin
  * @time 2020/2/17
  */
-@FeignClient("tensquare-user")
-public interface UserClient {
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-    Result findById(@PathVariable(value = "userId") String userId);
+@FeignClient("tensquare-article")
+public interface ArticleClient {
+
+    @RequestMapping(value = "/article/{articleId}",method = RequestMethod.GET)
+    Result findById(@PathVariable("articleId") String articleId);
+
 }

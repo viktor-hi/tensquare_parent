@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -26,6 +27,7 @@ import java.nio.file.Files;
 @SpringBootApplication
 @MapperScan("com.tensquare.article.dao")
 @EnableEurekaClient
+@EnableFeignClients
 public class ArticleApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
