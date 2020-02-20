@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="884f3153-9c29-4edd-918d-f8f7e70f0445" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/client/NoticeClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/RabbitmqConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tensquare_article/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/ArticleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/ArticleApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/target/classes/com/tensquare/article/ArticleApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/target/classes/com/tensquare/article/ArticleApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/target/classes/com/tensquare/article/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/target/classes/com/tensquare/article/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/target/classes/com/tensquare/article/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/target/classes/com/tensquare/article/service/ArticleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_notice/src/main/java/com/tensquare/notice/feign/ArticleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_notice/src/main/java/com/tensquare/notice/client/ArticleClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_notice/src/main/java/com/tensquare/notice/feign/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_notice/src/main/java/com/tensquare/notice/client/UserClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_notice/src/main/java/com/tensquare/notice/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_notice/src/main/java/com/tensquare/notice/service/NoticeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_user/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_user/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_user/target/classes/com/tensquare/user/UserApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_user/target/classes/com/tensquare/user/UserApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensquare_article/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,10 +69,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tensquare_encrypt/src/main/java/com/tensquare/encrypt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -94,6 +85,7 @@
       <recent name="com.tensquare.article.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article" />
       <recent name="$PROJECT_DIR$/tensquare_encrypt/src/main/java/com/tensquare/encrypt" />
       <recent name="$PROJECT_DIR$/tensquare_user/src/main/resources/static/js" />
       <recent name="$PROJECT_DIR$/tensquare_user/src/main/resources/static" />
@@ -202,7 +194,7 @@
       <workItem from="1580748126566" duration="28475000" />
       <workItem from="1581527086411" duration="2139000" />
       <workItem from="1581669745531" duration="8799000" />
-      <workItem from="1581809141776" duration="13636000" />
+      <workItem from="1581809141776" duration="15992000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交，article模块和common模块">
       <created>1580917943355</created>
@@ -281,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581963999454</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="2.18 更新文章模块点赞与订阅功能">
+      <created>1582035481764</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1582035481764</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,25 +330,38 @@
     <MESSAGE value="2.16 消息通知系统" />
     <MESSAGE value="2.17 更新消息通知系统" />
     <MESSAGE value="2.18 更新消息通知系统，feign" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.18 更新消息通知系统，feign" />
+    <MESSAGE value="2.18 更新文章模块点赞与订阅功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.18 更新文章模块点赞与订阅功能" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="225" key="#Project_Structure" timestamp="1581862782130">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="496" y="225" key="#Project_Structure/0.0.1792.1120@0.0.1792.1120" timestamp="1581862782130" />
+    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582088334747">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1582088334747" />
     <state x="1160" y="276" key="#com.intellij.ide.util.MemberChooser" timestamp="1581777604101">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="1160" y="276" key="#com.intellij.ide.util.MemberChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1581777604101" />
+    <state x="633" y="351" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1582088250791">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="633" y="351" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1582088250791" />
+    <state x="681" y="473" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1582088294246">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="681" y="473" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1582088294246" />
     <state x="437" y="492" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1580751434603">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="437" y="492" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1580751434603" />
-    <state x="392" y="160" key="CommitChangelistDialog2" timestamp="1581963999257">
+    <state x="392" y="160" key="CommitChangelistDialog2" timestamp="1582035481530">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="392" y="160" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1581963999257" />
+    <state x="392" y="160" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1582035481530" />
     <state x="392" y="160" key="CommitChangelistDialog2/0.23.1792.1097@0.23.1792.1097" timestamp="1581669932586" />
     <state x="100" y="100" width="1592" height="920" key="DiffContextDialog" timestamp="1581671460593">
       <screen x="0" y="0" width="1792" height="1120" />
@@ -419,18 +431,18 @@
     </state>
     <state width="1750" height="382" key="GridCell.Tab.2.right/0.0.1792.1120@0.0.1792.1120" timestamp="1582033275759" />
     <state width="1750" height="382" key="GridCell.Tab.2.right/0.23.1792.1097@0.23.1792.1097" timestamp="1581962266717" />
-    <state x="383" y="141" key="SettingsEditor" timestamp="1581854417811">
+    <state x="383" y="141" key="SettingsEditor" timestamp="1582088325762">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="383" y="141" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1581854417811" />
+    <state x="383" y="141" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1582088325762" />
     <state x="626" y="310" width="540" height="524" key="StructurePopup" timestamp="1581489618764">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="626" y="310" width="540" height="524" key="StructurePopup/0.0.1792.1120@0.0.1792.1120" timestamp="1581489618764" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1581964009535">
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1582035494439">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1581964009535" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1582035494439" />
     <state x="100" y="100" width="1592" height="920" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581671460593">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

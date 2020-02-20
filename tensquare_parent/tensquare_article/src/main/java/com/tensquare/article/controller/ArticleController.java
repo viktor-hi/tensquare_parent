@@ -1,13 +1,11 @@
 package com.tensquare.article.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.tensquare.article.client.NoticeClient;
 import com.tensquare.article.pojo.Article;
 import com.tensquare.article.service.ArticleService;
 import com.tensquare.entity.PageResult;
 import com.tensquare.entity.Result;
 import com.tensquare.entity.StatusCode;
-import com.tensquare.utils.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.annotation.Validated;
