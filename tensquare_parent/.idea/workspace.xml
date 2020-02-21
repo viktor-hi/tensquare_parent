@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="884f3153-9c29-4edd-918d-f8f7e70f0445" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/RabbitmqConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/src/main/java/com/tensquare/article/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensquare_article/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +190,7 @@
       <workItem from="1580748126566" duration="28475000" />
       <workItem from="1581527086411" duration="2139000" />
       <workItem from="1581669745531" duration="8799000" />
-      <workItem from="1581809141776" duration="15992000" />
+      <workItem from="1581809141776" duration="16326000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交，article模块和common模块">
       <created>1580917943355</created>
@@ -280,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582035481764</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="2.21 更新文章模块消息订阅功能，配置rabbitmq">
+      <created>1582215025767</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1582215025767</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +334,8 @@
     <MESSAGE value="2.17 更新消息通知系统" />
     <MESSAGE value="2.18 更新消息通知系统，feign" />
     <MESSAGE value="2.18 更新文章模块点赞与订阅功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.18 更新文章模块点赞与订阅功能" />
+    <MESSAGE value="2.21 更新文章模块消息订阅功能，配置rabbitmq" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.21 更新文章模块消息订阅功能，配置rabbitmq" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="225" key="#Project_Structure" timestamp="1581862782130">
@@ -358,10 +362,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="437" y="492" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1580751434603" />
-    <state x="392" y="160" key="CommitChangelistDialog2" timestamp="1582035481530">
+    <state x="392" y="160" key="CommitChangelistDialog2" timestamp="1582215025626">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="392" y="160" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1582035481530" />
+    <state x="392" y="160" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1582215025626" />
     <state x="392" y="160" key="CommitChangelistDialog2/0.23.1792.1097@0.23.1792.1097" timestamp="1581669932586" />
     <state x="100" y="100" width="1592" height="920" key="DiffContextDialog" timestamp="1581671460593">
       <screen x="0" y="0" width="1792" height="1120" />
@@ -439,10 +443,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="626" y="310" width="540" height="524" key="StructurePopup/0.0.1792.1120@0.0.1792.1120" timestamp="1581489618764" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1582035494439">
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1582215032421">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1582035494439" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1582215032421" />
     <state x="100" y="100" width="1592" height="920" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581671460593">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

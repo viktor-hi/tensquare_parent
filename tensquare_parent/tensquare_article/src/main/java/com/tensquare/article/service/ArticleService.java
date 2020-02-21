@@ -8,6 +8,9 @@ import com.tensquare.article.dao.ArticleDao;
 import com.tensquare.article.pojo.Article;
 import com.tensquare.notice.pojo.Notice;
 import com.tensquare.utils.IdWorker;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -111,6 +114,17 @@ public class ArticleService {
      * @param articleId
      * @return
      */
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private DirectExchange exchange;
+
+    @Autowired
+    private RabbitAdmin rabbitAdmin;
+
+
     public boolean subscribe(String userId, String articleId) {
         String authorId = articleDao.selectById(articleId).getUserid();
 
