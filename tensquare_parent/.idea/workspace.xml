@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="884f3153-9c29-4edd-918d-f8f7e70f0445" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensquare_article/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tensquare_article/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +72,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -177,7 +178,7 @@
     </option>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -190,7 +191,7 @@
       <workItem from="1580748126566" duration="28475000" />
       <workItem from="1581527086411" duration="2139000" />
       <workItem from="1581669745531" duration="8799000" />
-      <workItem from="1581809141776" duration="16326000" />
+      <workItem from="1581809141776" duration="19255000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交，article模块和common模块">
       <created>1580917943355</created>
@@ -283,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582215025767</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="2.21 更新文章模块消息订阅功能，配置rabbitmq">
+      <created>1582293130693</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1582293130693</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,10 +370,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="437" y="492" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1580751434603" />
-    <state x="392" y="160" key="CommitChangelistDialog2" timestamp="1582215025626">
+    <state x="392" y="160" key="CommitChangelistDialog2" timestamp="1582293130595">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="392" y="160" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1582215025626" />
+    <state x="392" y="160" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1582293130595" />
     <state x="392" y="160" key="CommitChangelistDialog2/0.23.1792.1097@0.23.1792.1097" timestamp="1581669932586" />
     <state x="100" y="100" width="1592" height="920" key="DiffContextDialog" timestamp="1581671460593">
       <screen x="0" y="0" width="1792" height="1120" />
@@ -435,18 +443,19 @@
     </state>
     <state width="1750" height="382" key="GridCell.Tab.2.right/0.0.1792.1120@0.0.1792.1120" timestamp="1582033275759" />
     <state width="1750" height="382" key="GridCell.Tab.2.right/0.23.1792.1097@0.23.1792.1097" timestamp="1581962266717" />
-    <state x="383" y="141" key="SettingsEditor" timestamp="1582088325762">
+    <state x="383" y="141" key="SettingsEditor" timestamp="1582317668946">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="383" y="141" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1582088325762" />
+    <state x="383" y="141" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1582317668946" />
+    <state x="383" y="161" key="SettingsEditor/0.23.1792.1097@0.23.1792.1097" timestamp="1582294448723" />
     <state x="626" y="310" width="540" height="524" key="StructurePopup" timestamp="1581489618764">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="626" y="310" width="540" height="524" key="StructurePopup/0.0.1792.1120@0.0.1792.1120" timestamp="1581489618764" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1582215032421">
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1582293197808">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1582215032421" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1582293197808" />
     <state x="100" y="100" width="1592" height="920" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581671460593">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

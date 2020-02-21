@@ -16,6 +16,7 @@ spring:
       host: 116.85.35.70
   redis:
     host: 116.85.35.70
+    password: chx131313
   rabbitmq:
       host: 192.168.147.177
 # eureka 配置
