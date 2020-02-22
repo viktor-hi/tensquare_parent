@@ -12,6 +12,7 @@ import com.tensquare.notice.pojo.NoticeFresh;
 import com.tensquare.utils.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ public class NoticeService {
         getNoticeInfo(notice);
         return notice;
     }
-
+    @Transactional
     public void add(Notice notice) {
         //1.设置初始值
         notice.setState("0");
@@ -50,11 +51,11 @@ public class NoticeService {
         notice.setId(id);
         noticeDao.insert(notice);
 
-        //2.待推送消息入库，新消息提醒
-        NoticeFresh noticeFresh = new NoticeFresh();
-        noticeFresh.setNoticeId(id);//消息id
-        noticeFresh.setUserId(notice.getReceiverId());//待通知用户的id
-        noticeFreshDao.insert(noticeFresh);
+        //2.待推送消息入库，新消息提醒    推送消息改为rabbitmq实现
+//        NoticeFresh noticeFresh = new NoticeFresh();
+//        noticeFresh.setNoticeId(id);//消息id
+//        noticeFresh.setUserId(notice.getReceiverId());//待通知用户的id
+//        noticeFreshDao.insert(noticeFresh);
     }
 
     public Page<Notice> findPage(int page, int size) {

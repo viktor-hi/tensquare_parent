@@ -3,12 +3,17 @@ package com.tensquare.article.service;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 
+import com.tensquare.article.RabbitmqConfig;
 import com.tensquare.article.client.NoticeClient;
 import com.tensquare.article.dao.ArticleDao;
 import com.tensquare.article.pojo.Article;
 import com.tensquare.notice.pojo.Notice;
 import com.tensquare.utils.IdWorker;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
+
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +80,8 @@ public class ArticleService {
 
         }
         articleDao.insert(article);
+        //入库成功后，发送mq消息，内容是消息通知id
+        rabbitTemplate.convertAndSend(RabbitmqConfig.EX_ARTICLE,authorId,article.getId());
     }
 
     public void update(Article article) {
@@ -125,24 +132,43 @@ public class ArticleService {
     private RabbitAdmin rabbitAdmin;
 
 
+    /**
+     * 订阅
+     *
+     * @param userId
+     * @param articleId
+     * @return
+     */
     public boolean subscribe(String userId, String articleId) {
+        //1.根据文章Id获得文章作者Id
         String authorId = articleDao.selectById(articleId).getUserid();
-
+        //2.存到Redis
         //当前用户关注的作者set
-        String userKey = "article_subscribe_"+userId;
+        String userKey = "article_subscribe_" + userId;
         //该作者被关注的用户set
-        String authorKey = "article_author_"+authorId;
+        String authorKey = "article_author_" + authorId;
 
         Boolean isMember = redisTemplate.opsForSet().isMember(userKey, authorId);
 
-        //判断是否已经订阅
-        if(isMember){
-            redisTemplate.opsForSet().remove(userKey,authorId);
-            redisTemplate.opsForSet().remove(authorKey,userId);
+        //创建queue
+        Queue queue = new Queue("article_subscribe_" + userId, true);
+        //声明exchange和queue的绑定关系，设置路由键为作者id
+        Binding binding = BindingBuilder.bind(queue).to(exchange).with(authorId);
+
+        //3.判断是否已经订阅
+        if (isMember) {
+            redisTemplate.opsForSet().remove(userKey, authorId);
+            redisTemplate.opsForSet().remove(authorKey, userId);
+            //进行解绑
+            rabbitAdmin.removeBinding(binding);
             return false;
-        }else{
-            redisTemplate.opsForSet().add(userKey,authorId);
-            redisTemplate.opsForSet().add(authorKey,userId);
+        } else {
+            redisTemplate.opsForSet().add(userKey, authorId);
+            redisTemplate.opsForSet().add(authorKey, userId);
+
+            //进行绑定
+            rabbitAdmin.declareQueue(queue);
+            rabbitAdmin.declareBinding(binding);
             return true;
         }
     }
