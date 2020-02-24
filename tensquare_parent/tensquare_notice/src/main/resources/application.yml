@@ -10,6 +10,8 @@ spring:
     password: 123456
   redis:
     host: 116.85.35.70
+  rabbitmq:
+    host: 116.85.35.70
 # Mybatis-Plus 配置
 mybatis-plus:
   #  mapper-locations: classpath:/mapper/*Mapper.xml
