@@ -1,0 +1,6 @@
+com/tensquare/user/controller/UserController.class
+com/tensquare/user/dao/UserDao.class
+com/tensquare/user/pojo/User.class
+com/tensquare/user/config/MyBatisPlusConfig.class
+com/tensquare/user/UserApplication.class
+com/tensquare/user/service/UserService.class
