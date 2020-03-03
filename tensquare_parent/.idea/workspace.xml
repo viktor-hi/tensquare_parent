@@ -22,6 +22,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
@@ -90,9 +95,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1582624043883" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1582625621985">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state x="531" y="306" key="Vcs.Push.Dialog.v2" timestamp="1583250596647">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1582625621985" />
+    <state x="531" y="306" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1583250596647" />
   </component>
 </project>
